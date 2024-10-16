@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-8 order-1">
+    <div class="card">
+      <div class="card-header bg-success">
+        <div>User Data-List</div>
+      </div>
+      <div class="card-body">
+        <!-- Sorting and Searching Inputs -->
+        <div class="row mb-3">
+          <div class="col-12">
+            <label for="sortSelect" style="font-weight: 600; font-size: larger"
+              >Sort By :-</label
+            >
+            <select
+              id="sortSelect"
+              [(ngModel)]="selectedSort"
+              class="form-control custom-select"
+              (change)="sortBySelectedOption()"
+              style="min-width: 200px"
+            >
+              <option value="">Select Option</option>
+              <option value="name">Name</option>
+              <option value="email">Email</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-12">
+            <label for="searchInput" style="font-weight: 600; font-size: larger"
+              >Search:</label
+            >
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Search by name or email"
+              [(ngModel)]="searchValue"
+              (input)="search()"
+              style="min-width: 200px"
+            />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email ID</th>
+                  <th>Role</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let employee of dataSource.data; let i = index">
+                  <td>{{ i + 1 }}</td>
+                  <td>{{ employee.name }}</td>
+                  <td>{{ employee.email }}</td>
+                  <td>{{ employee.role }}</td>
+                  <td class="text-center">
+                    <button
+                      class="btn btn-primary"
+                      (click)="editData(employee)"
+                    >
+                      Edit
+                    </button>
+                    <button class="btn btn-danger mx-2" (click)="removeData(i)">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <mat-paginator
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 20]"
+              showFirstLastButtons
+            >
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4 order-2 d-flex justify-content-end">
+    <div class="card" style="min-width: 300px">
+      <!-- Set a minimum width -->
+      <div class="card-header bg-success">Add User</div>
+      <div class="card-body">
+        <form [formGroup]="employeForm">
+          <div class="rowac">
+            <div class="col-6 mb-2">
+              <label for="name">Name :- </label>
+              <input type="text" formControlName="name" class="form-control" />
+              <div
+                *ngIf="
+                  employeForm.get('name')?.invalid &&
+                  employeForm.get('name')?.touched
+                "
+                class="text-danger"
+              >
+                <div *ngIf="employeForm.get('name')?.errors?.['required']">
+                  Name is required.
+                </div>
+                <div *ngIf="employeForm.get('name')?.errors?.['minlength']">
+                  Name must be at least 3 characters long.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-2">
+              <label for="email">Email ID :- </label>
+              <input type="text" formControlName="email" class="form-control" />
+              <div
+                *ngIf="
+                  employeForm.get('email')?.invalid &&
+                  employeForm.get('email')?.touched
+                "
+                class="text-danger"
+              >
+                <div *ngIf="employeForm.get('email')?.errors?.['required']">
+                  Email is required.
+                </div>
+                <div *ngIf="employeForm.get('email')?.errors?.['email']">
+                  Please enter a valid email address.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 mb-2">
+              <label for="role">Role :- </label>
+              <select formControlName="role" class="form-control">
+                <option value="">Select a Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+                <option value="Developer">Developer</option>
+              </select>
+              <div
+                *ngIf="
+                  employeForm.get('role')?.invalid &&
+                  employeForm.get('role')?.touched
+                "
+                class="text-danger"
+              >
+                <div *ngIf="employeForm.get('role')?.errors?.['required']">
+                  Role is required.
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="row pt-2">
+          <div class="col-6 text-center">
+            <button class="btn btn-danger" (click)="employeForm.reset()">
+              Remove Details
+            </button>
+          </div>
+          <div class="col-6 text-center">
+            <button class="btn btn-success" (click)="saveData()">
+              Save Employee
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,166 @@
+/* General */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+/* Flexbox for Row */
+.row {
+    padding: 15px;
+    // margin-top: 50px;
+    // padding-top: 50px;
+    display: flex;
+    gap: 50px;
+    // margin-right: 50px;
+}
+
+.text-danger {
+    color: red;
+    /* Ensures that the text is red */
+}
+
+/* Card Styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* Card Header */
+.card-header {
+    padding: 15px;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #28a745;
+    /* Custom color for headers */
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* Table Styling */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #f1f1f1;
+    font-weight: 600;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+.form-control {
+    border-radius: 4px;
+    box-shadow: none;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+.custom-select {
+    appearance: none;
+    padding-right: 32px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 4.5a.5.5 0 0 1 .832-.374l5.68 5.68a.5.5 0 0 1-.707.707l-5.68-5.68A.5.5 0 0 1 1.5 4.5zm13 0a.5.5 0 0 0-.832-.374l-5.68 5.68a.5.5 0 0 0 .707.707l5.68-5.68a.5.5 0 0 0-.707-.707z"/></svg>');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+}
+
+.card {
+    position: relative;
+}
+.card[style*="min-width"] {
+    min-width: 300px;
+}
+
+@media (max-width: 767.98px) {
+    .col-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-8 {
+        width: 100%;
+    }
+
+    .card[style*="min-width"] {
+        position: relative;
+        left: auto;
+        right: auto;
+    }
+}
+
+.order-2{
+height: 40px;
+}
